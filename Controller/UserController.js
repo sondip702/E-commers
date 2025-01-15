@@ -43,3 +43,5 @@ exports.registation = AsyncHandler(async (req,res)=>{
         res.status(500).json({ success: false, message: "Registration failed", error: err.message });
     }
 })
+
+exports.login = AsyncHandler(async)
