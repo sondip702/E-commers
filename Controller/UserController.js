@@ -60,11 +60,7 @@ exports.login = AsyncHandler(async(req,res)=>{
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
 
-        const token = jwt.sign(
-            { id: user._id, email: user.email }, 
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
-        );
+        const token = createToken(isMatch._id)
 
         res.status(200).json({
             success: true,
