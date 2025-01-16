@@ -58,8 +58,12 @@ exports.login = AsyncHandler(async(req,res)=>{
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
 
-        const token = createToken(isMatch._id)
+        const age = 60 * 60 * 24 * 7;
 
+        const token = jwt.sign({
+            id:user.id,
+            isAdmin: false
+        })
         res.status(200).json({
             success: true,
             message: "Login successful",
