@@ -63,6 +63,13 @@ exports.login = AsyncHandler(async(req,res)=>{
         const token = jwt.sign({
             id:user.id,
             isAdmin: false
+        },
+        process.env.JWT_SECRET,
+        {expiresIn: age}    
+        );  
+        res.cookie("token", token,{
+            httpOnly: true,
+            maxAge: age
         })
         res.status(200).json({
             success: true,
