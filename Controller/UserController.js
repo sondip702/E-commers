@@ -31,12 +31,10 @@ exports.registation = AsyncHandler(async (req,res)=>{
                 password:hashPassword
                 
         })   
-        const token = createToken(newUser._id)
-
         return res.status(201).json({
             success: true,
-            message: "User registered successfully",
-            token
+            message: "User registered successfully"
+            
         });
     }catch(err){
         console.log("Registation failed", err.message);
