@@ -81,3 +81,8 @@ exports.login = AsyncHandler(async(req,res)=>{
         res.status(500).json({ success: false, message: "Registration failed", error: err.message });
     }
 })
+
+exports.logout = (req, res) => {
+    res.clearCookie("token")
+    res.status(200).json({ message: "Logout Successful" });
+  };
